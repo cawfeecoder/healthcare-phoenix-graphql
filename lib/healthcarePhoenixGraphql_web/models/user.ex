@@ -1,16 +1,17 @@
-defmodule HealthcarePhoenixGraphqlWeb.Provider do
+defmodule HealthcarePhoenixGraphqlWeb.User do
   use Ecto.Schema
   import Ecto.Query
   import Ecto.Changeset
 
   alias HealthcarePhoenixGraphql.Repo
-  alias HealthcarePhoenixGraphqlWeb.Provider
+  alias HealthcarePhoenixGraphqlWeb.User
 
   @primary_key {:id, :binary_id, autogenerate: false}
   @foreign_key_type :binary_id
 
-  schema "providers" do
-    field :company_name, :string
+  schema "users" do
+    field :name, :string
+    field :provider_id, :string
   end
 
   def changeset(struct, params \\ %{}) do
@@ -19,8 +20,10 @@ defmodule HealthcarePhoenixGraphqlWeb.Provider do
     |> validate_required([:name])
   end
 
-  def list_all_providers do
-    Repo.all(Provider)
+  def list_all_users do
+    Repo.all(
+      from u in User,
+      limit: 100
+    )
   end
-
 end
