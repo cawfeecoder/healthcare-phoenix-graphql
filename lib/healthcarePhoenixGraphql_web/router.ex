@@ -13,14 +13,21 @@ defmodule HealthcarePhoenixGraphqlWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/" do
+    pipe_through :browser # Use the default browser stack
+  end
+
   scope "/api" do
      pipe_through :api
-
-     forward "/graphiql", Absinthe.Plug.GraphiQL,
-       schema: HealthcarePhoenixGraphqlWeb.Schema
 
      forward "/", Absinthe.Plug,
        schema:  HealthcarePhoenixGraphqlWeb.Schema
    end
+
+  scope "/graphiql" do
+     forward "/", Absinthe.Plug.GraphiQL,
+     schema: HealthcarePhoenixGraphqlWeb.Schema,
+     socket: HealthcarePhoenixGraphqlWeb.UserSocket
+  end
 
 end

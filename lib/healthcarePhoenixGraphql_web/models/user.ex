@@ -16,7 +16,7 @@ defmodule HealthcarePhoenixGraphqlWeb.User do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
+    |> cast(params, [:name, :provider_id])
     |> validate_required([:name])
   end
 
@@ -25,5 +25,11 @@ defmodule HealthcarePhoenixGraphqlWeb.User do
       from u in User,
       limit: 100
     )
+  end
+
+  def create(args) do
+    %User{}
+    |> User.changeset(args)
+    |> Repo.insert
   end
 end

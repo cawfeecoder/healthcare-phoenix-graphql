@@ -11,6 +11,7 @@ defmodule HealthcarePhoenixGraphqlWeb.Provider do
 
   schema "providers" do
     field :company_name, :string
+    has_many :users, User
   end
 
   def changeset(struct, params \\ %{}) do

@@ -1,5 +1,6 @@
 defmodule HealthcarePhoenixGraphqlWeb.UserSocket do
   use Phoenix.Socket
+  use Absinthe.Phoenix.Socket, schema: HealthcarePhoenixGraphqlWeb.Schema
 
   ## Channels
   # channel "room:*", HealthcarePhoenixGraphqlWeb.RoomChannel
@@ -20,6 +21,7 @@ defmodule HealthcarePhoenixGraphqlWeb.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(_params, socket) do
+    socket = Absinthe.Phoenix.Socket.put_schema(socket, HealthcarePhoenixGraphqlWeb.Schema)
     {:ok, socket}
   end
 

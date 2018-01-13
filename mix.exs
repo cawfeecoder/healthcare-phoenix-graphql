@@ -47,6 +47,7 @@ defmodule HealthcarePhoenixGraphql.Mixfile do
       {:rethinkdb_ecto, "~> 0.7"},
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4.0"},
+      {:absinthe_phoenix, "~> 1.4.0"},
       {:absinthe_ecto, git: "https://github.com/absinthe-graphql/absinthe_ecto.git"},
       {:poison, "~> 2.0"}
     ]

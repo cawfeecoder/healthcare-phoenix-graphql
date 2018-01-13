@@ -12,6 +12,7 @@ defmodule HealthcarePhoenixGraphql.Application do
       supervisor(HealthcarePhoenixGraphql.Repo, []),
       # Start the endpoint when the application starts
       supervisor(HealthcarePhoenixGraphqlWeb.Endpoint, []),
+      supervisor(Absinthe.Subscription, [HealthcarePhoenixGraphqlWeb.Endpoint])
       # Start your own worker by calling: HealthcarePhoenixGraphql.Worker.start_link(arg1, arg2, arg3)
       # worker(HealthcarePhoenixGraphql.Worker, [arg1, arg2, arg3]),
     ]

@@ -1,5 +1,6 @@
 defmodule HealthcarePhoenixGraphqlWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :healthcarePhoenixGraphql
+  use Absinthe.Phoenix.Endpoint
 
   socket "/socket", HealthcarePhoenixGraphqlWeb.UserSocket
 
